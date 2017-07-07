@@ -1,0 +1,10 @@
+version: '2'
+services:
+  elasticsearch:
+    build: ./elasticsearch
+    ports:
+      - "9200:9200"
+  kibana:
+    image: kibana:5.4.3
+    ports:
+      - "5601:5601"
