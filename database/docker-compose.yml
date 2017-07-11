@@ -7,6 +7,8 @@ services:
       - "8080:8080"
     environment:
       CHARACTER_SET: JA16SJIS
+    volumes:
+      - oracle-data:/docker-entrypoint-initdb.d
   mysql:
     image: mysql:5.7
     ports:
@@ -14,6 +16,12 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: admin-root
     volumes:
+      - mysql-data:/var/lib/mysql
       - ./mysql5.7/data/:/var/tmp/data
       - ./mysql5.7/sql/:/var/tmp/sql
       - ./mysql5.7/conf/:/etc/mysql/conf.d
+volumes:
+  mysql-data:
+    driver: local
+  oracle-data:
+    driver: local
