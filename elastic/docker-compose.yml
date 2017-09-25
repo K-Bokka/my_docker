@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   elasticsearch:
     build: ./elasticsearch
@@ -9,7 +9,7 @@ services:
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
   kibana:
-    image: kibana:5.4.3
+    image: kibana:5.5
     ports:
       - "5601:5601"
 volumes:

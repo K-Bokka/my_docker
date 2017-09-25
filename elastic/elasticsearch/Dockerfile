@@ -1,4 +1,4 @@
-FROM elasticsearch:5.4.3-alpine
+FROM elasticsearch:5.5-alpine
 
 WORKDIR "/usr/share/elasticsearch"
 RUN ["bin/elasticsearch-plugin", "install", "analysis-kuromoji"]
