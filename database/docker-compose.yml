@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   oracle:
     image: sath89/oracle-12c
@@ -8,18 +8,16 @@ services:
     environment:
       CHARACTER_SET: JA16SJIS
     volumes:
-      - oracle-data:/docker-entrypoint-initdb.d
+      - oracle-data:/u01/app/oracle sath89/oracle-12c
   mysql:
     image: mysql:5.7
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: admin-root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     volumes:
       - mysql-data:/var/lib/mysql
-      - ./mysql5.7/data/:/var/tmp/data
-      - ./mysql5.7/sql/:/var/tmp/sql
-      - ./mysql5.7/conf/:/etc/mysql/conf.d
 volumes:
   mysql-data:
     driver: local
