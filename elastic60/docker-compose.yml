@@ -1,0 +1,17 @@
+version: '3'
+services:
+  elasticsearch:
+    build: ./elasticsearch
+    ports:
+      - "19200:9200"
+    volumes:
+      - "elasticsearch60-data:/usr/share/elasticsearch/data"
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.0.1
+    ports:
+      - "15601:5601"
+volumes:
+  elasticsearch60-data:
+    driver: local

@@ -1,4 +1,4 @@
-FROM elasticsearch:5.5-alpine
+FROM docker.elastic.co/elasticsearch/elasticsearch:6.0.1
 
 WORKDIR "/usr/share/elasticsearch"
 RUN ["bin/elasticsearch-plugin", "install", "analysis-kuromoji"]
