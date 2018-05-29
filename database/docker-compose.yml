@@ -11,7 +11,7 @@ services:
       - oracle-data:/u01/app/oracle sath89/oracle-12c
   mysql:
     image: mysql:5.7
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-time-zone="Asia/Tokyo"
     ports:
       - "3306:3306"
     environment:
