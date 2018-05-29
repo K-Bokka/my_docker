@@ -5,7 +5,7 @@ services:
     ports:
       - "9200:9200"
     volumes:
-      - "elasticsearch-data:/usr/share/elasticsearch/data"
+      - "elasticsearch55-data:/usr/share/elasticsearch/data"
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
   kibana:
@@ -13,5 +13,5 @@ services:
     ports:
       - "5601:5601"
 volumes:
-  elasticsearch-data:
+  elasticsearch55-data:
     driver: local
