@@ -8,6 +8,11 @@ services:
       - redis-data:/data
     command: redis-server --appendonly yes
     restart: always
+  memcached:
+    image: memcached:1.5-alpine
+    ports:
+      - "11211:11211"
+    restart: always
 volumes:
   redis-data:
     driver: local
