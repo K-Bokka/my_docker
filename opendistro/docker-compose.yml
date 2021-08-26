@@ -1,0 +1,33 @@
+version: '3'
+services:
+  odfe-node1:
+    build: ./docker/opendistro
+    container_name: quouca_elasticsearch
+    ports:
+      - 9200:9200
+      - 9600:9600
+    expose:
+      - "9200"
+    environment:
+      discovery.type: single-node
+    volumes:
+      - odfe-node1:/usr/share/elasticsearch/data
+    networks:
+      - odfe-net
+  odfe-kibana:
+    build: ./docker/kibana
+    container_name: quouca_kibana
+    ports:
+      - 5601:5601
+    expose:
+      - "5601"
+    environment:
+      ELASTICSEARCH_URL: http://odfe-node1:9200
+      ELASTICSEARCH_HOSTS: http://odfe-node1:9200
+    networks:
+      - odfe-net
+volumes:
+  odfe-node1:
+    driver: local
+networks:
+  odfe-net:
