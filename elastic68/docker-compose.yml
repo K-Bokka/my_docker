@@ -1,0 +1,18 @@
+version: '3'
+services:
+  elasticsearch:
+    build: ./elasticsearch
+    ports:
+      - "9268:9200"
+    volumes:
+      - "elasticsearch68-data:/usr/share/elasticsearch/data"
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.type=single-node"
+  kibana:
+    image: docker.elastic.co/kibana/kibana-oss:6.8.18
+    ports:
+      - "5668:5601"
+volumes:
+  elasticsearch68-data:
+    driver: local
