@@ -1,0 +1,13 @@
+version: '3'
+services:
+  dynamodb:
+    image: amazon/dynamodb-local
+    platform: linux/amd64
+    ports:
+      - "8000:8000"
+    volumes:
+      - dynamodb-data:/home/dynamodblocal
+    command: -jar DynamoDBLocal.jar -sharedDb -dbPath . -optimizeDbBeforeStartup
+volumes:
+  dynamodb-data:
+    driver: local
