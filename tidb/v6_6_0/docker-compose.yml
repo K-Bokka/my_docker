@@ -5,7 +5,7 @@ services:
     build: .
     ports:
       - "4000:4000" # tidb port: mysql -u root -h127.0.0.1 -P4000
-      - "2379:2379" # dashboard port: http://localhost:2379/daschboard/
+      - "2379:2379" # dashboard port: http://localhost:2379/dashboard/
     volumes:
       - "tidb-v6_6_0-data:/root/.tiup/data/v6_6_0"
 volumes:
