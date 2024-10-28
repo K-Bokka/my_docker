@@ -1,0 +1,25 @@
+services:
+  elasticsearch:
+    platform: linux/amd64
+    build: ./elasticsearch
+    ports:
+      - "9200:9200"
+    volumes:
+      - "elasticsearch_data_7_10_1:/usr/share/elasticsearch/data"
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.type=single-node"
+    networks:
+      - elasticsearch_net_7_10_1
+  kibana:
+    platform: linux/amd64
+    image: docker.elastic.co/kibana/kibana-oss:7.10.1
+    ports:
+      - "5601:5601"
+    networks:
+      - elasticsearch_net_7_10_1
+volumes:
+  elasticsearch_data_7_10_1:
+    driver: local
+networks:
+  elasticsearch_net_7_10_1:
